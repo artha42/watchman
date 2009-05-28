@@ -6,32 +6,25 @@ h2. Simple API for declaring roles
 
 Watchman believes that roles belong to models and so it lets you declare roles and permissions in the model.
 
-@
-class Document < ActiveRecord::Base
+@class Document < ActiveRecord::Base
   has_roles :owner, :collaborator
   permit :owner, :to => [:edit, :delete, :share]
   permit :collaborator, :to => [:share]
-end
-@
+end@
 
 The plugin includes an @assign@ method in every model.
 
-@
-  document=Document.new(params[:document])
-  document.assign :role, :to=>current_user
-@
+@document=Document.new(params[:document])
+document.assign :role, :to=>current_user@
 
 These roles and permissions can then be used in the controller and various other parts of your rails app. Watchman provides the following convenience methods on the User class included in the plugin.
 
-@
-User.in_role? :owner, Document.find(:first)
+@User.in_role? :owner, Document.find(:first)
 #checks if the user has role for the document instance
 #it takes the logged in user as default from the UserSession object
 #this searches both the groups and users associated with the role
 
-user.can? :collaborate, 
-
-@
+user.can? :collaborate, @
 
 h2. TODO
 
