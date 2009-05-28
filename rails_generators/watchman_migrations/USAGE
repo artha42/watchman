@@ -1,0 +1,5 @@
+Run the following
+
+script/generate watchman_migrations
+
+This will generate the required create_table statemens in one big migration. 
