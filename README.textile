@@ -2,6 +2,14 @@ h1. Watchman
 
 Watchman is a simple solution for doing Authentication and Authorization. This plugin is far from complete however it has the features below.
 
+h2. A simple generator to create Auth and Auth models.
+
+<pre><code>
+$ script/generate watchman_migrations
+</code></pre>
+
+This generates about 6 tables and sets a few unique indices. Run the migration and relax.
+
 h2. Simple API for declaring roles
 
 Watchman believes that roles belong to models and so it lets you declare roles and permissions in the model.
@@ -35,7 +43,6 @@ user.can? :collaborate, @document
 
 h2. TODO
 
-- We badly need generators for the default schema. That is coming really soon.
 - Optimize the query for a bazillion users. Get rid of loops.
 
 Copyright (c) 2009 Artha42 Technology Solutions Pvt. Ltd., released under the MIT license
