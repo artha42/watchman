@@ -56,4 +56,20 @@ ActiveRecord::Schema.define(:version => 0) do
 
   add_index :group_role_memberships, [:role_id, :group_id, :instance_id], :unique=>true
 
+  #Test case specific tables
+
+  create_table :documents, :force=>true do |t|
+    t.string :name
+    t.string :description
+    t.integer :section_id
+    t.timestamps
+  end
+
+  create_table :sections, :force=>true do |t|
+    t.string :name
+    t.string :description
+
+    t.timestamps
+  end
+
 end
