@@ -1,8 +1,12 @@
-require 'watchmen_routes.rb'
+require 'rubygems'
+require 'activesupport'
+require 'activerecord'
+require 'actionpack'
+require 'authlogic'
 
-%w{ models controllers helpers } do |dir|
+%w{ models controllers helpers }.each do |dir|
   path = File.join(File.dirname(__FILE__),"app",dir)
   $LOAD_PATH << path
-  ActiveSupport::Dependencies.load_paths.add(path)
-  ActiveSupport::Dependencies.load_once_path.delete(path)
+  ActiveSupport::Dependencies.load_paths << path
+  ActiveSupport::Dependencies.load_once_paths.delete(path)
 end

@@ -1,5 +1,5 @@
 ActiveRecord::Schema.define(:version => 0) do
-  create_table :users do |t|
+  create_table :users , :force=>true do |t|
     t.string    :login,               :null => false                # optional, you can use email instead, or both
     t.string    :email,               :null => false                # optional, you can use login instead, or both
     t.string    :crypted_password,    :null => false                # optional, see below
@@ -17,13 +17,13 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string    :last_login_ip                                      # optional, see Authlogic::Session::MagicColumns
   end
 
-  create_table :groups do |t|
+  create_table :groups , :force=>true do |t|
     t.string :name
     t.text :description
     t.timestamps
   end
 
-  create_table :memberships do |t|
+  create_table :memberships , :force=>true do |t|
     t.integer :group_id
     t.integer :user_id
     
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 0) do
 
   add_index :memberships, [:group_id,:user_id], :unique=>true
 
-  create_table :roles do |t|
+  create_table :roles , :force=>true do |t|
     t.string :name
     t.string :scope #this is the name of the class
     t.timestamps
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 0) do
 
   add_index :roles, [:name,:scope], :unique=>true
 
-  create_table :user_role_memberships do |t|
+  create_table :user_role_memberships , :force=>true do |t|
     t.integer :role_id
     t.integer :user_id
     t.integer :instance_id
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(:version => 0) do
 
   add_index :user_role_memberships, [:role_id, :user_id, :instance_id], :unique=>true
 
-  create_table :group_role_memberships do |t|
+  create_table :group_role_memberships , :force=>true do |t|
     t.integer :role_id
-    t.integer :user_id
+    t.integer :group_id
     t.integer :instance_id
   end
 
