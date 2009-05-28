@@ -1,11 +1,9 @@
-Watchman
-========
+h1.Watchman
 
 Introduction goes here.
 
 
-Example
-=======
+h2.Example
 
 Example goes here.
 
