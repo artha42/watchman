@@ -27,10 +27,24 @@ module Watchman
         end
         role=Role.find_or_create_by_name_and_scope(role,self.class.name)
         if options[:to].instance_of?(Group)
-          role.groups << options[:to]
+          if GroupRoleMembership.find(:first,
+                                      :conditions => ["role_id=? and group_id=? and instance_id=?", role.id, options[:to].id,self.id])
+            return
+          end
+          grm=role.group_role_memberships.build
+          grm.group = options[:to]
+          grm.instance_id = self.id
+          grm.save
         end
         if options[:to].instance_of?(User)
-          role.users << options[:to]
+          if UserRoleMembership.find(:first,
+                                      :conditions => ["role_id=? and user_id=? and instance_id=?", role.id, options[:to].id,self.id])
+            return
+          end 
+          urm=role.user_role_memberships.build
+          urm.user = options[:to]
+          urm.instance_id=self.id
+          urm.save
         end
       end
     end
