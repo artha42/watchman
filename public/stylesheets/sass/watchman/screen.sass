@@ -1,0 +1,24 @@
+@import blueprint.sass
+@import blueprint/modules/typography.sass
+@import blueprint/modules/grid.sass
+@import blueprint/modules/colors.sass
+@import blueprint/modules/debug.sass
+@import compass/reset.sass
+
++blueprint-grid
++blueprint-typography
+
+#container
+  +container
+  #header
+    +column(24, true)
+  #nav
+    +column(24, true)
+    li
+      :display inline
+      :color #ffffff
+      :background-color #ff0000
+    li.selected
+      :display inline
+      :color #ff0000
+      :background-color #ffffff
