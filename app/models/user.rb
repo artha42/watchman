@@ -42,4 +42,17 @@ class User < ActiveRecord::Base
     false
   end
 
+  def is_admin?
+    if(self.login == "admin")
+      return true
+    end
+    admin = Group.find_by_name("admin") 
+    if admin
+      if(admin.users.index(self))
+        return true
+      end
+    end
+    return false
+  end
+
 end
