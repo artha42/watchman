@@ -39,12 +39,14 @@ module Watchman
         if options[:to].instance_of?(User)
           if UserRoleMembership.find(:first,
                                       :conditions => ["role_id=? and user_id=? and instance_id=?", role.id, options[:to].id,self.id])
+            logger.info "Record found. Not creating an new one"
             return
           end 
           urm=role.user_role_memberships.build
-          urm.user = options[:to]
+          urm.user_id = options[:to].id
           urm.instance_id=self.id
           urm.save
+          logger.info "done saving a role"
         end
       end
     end
