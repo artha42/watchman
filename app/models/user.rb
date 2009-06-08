@@ -19,11 +19,12 @@ class User < ActiveRecord::Base
   def in_role?(role,obj)
     scope=obj.class.name
     roleobj=Role.find_or_create_by_name_and_scope(:name=>role,:scope=>scope)
-    if roleobj.users.index(self)
+    if roleobj.user_role_memberships.find(:first,:conditions=>["user_id=? and instance_id = ?", self.id, obj.id])
       return true
     end
-    roleobj.groups.each do |group|
-      if(group.users.index(self))
+    grms = roleobj.group_role_memberships.find(:all, :conditions=>["instance_id = ?", obj.id])
+    grms.each do |grm|
+      if(grm.group.users.index(self))
         return true
       end
     end
