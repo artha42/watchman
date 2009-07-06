@@ -18,13 +18,13 @@ class User < ActiveRecord::Base
 
   def in_role?(role,obj)
     scope=obj.class.name
-    roleobj=Role.find_or_create_by_name_and_scope(:name=>role,:scope=>scope)
-    if roleobj.user_role_memberships.find(:first,:conditions=>["user_id=? and instance_id = ?", self.id, obj.id])
+    roleobj=Role.find_or_create_by_name_and_scope_and_instance_id(role.to_s,scope,obj.id)
+    if roleobj.users.index(self)
       return true
     end
-    grms = roleobj.group_role_memberships.find(:all, :conditions=>["instance_id = ?", obj.id])
-    grms.each do |grm|
-      if(grm.group.users.index(self))
+    
+    roleobj.groups.each do |group|
+      if(group.users.index(self))
         return true
       end
     end

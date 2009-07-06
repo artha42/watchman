@@ -21,32 +21,44 @@ module Watchman
     end
     
     module InstanceMethods
+      def revoke(role,options={})
+        if not options.has_key?(:from)
+          return
+        end
+        role=Role.find_or_create_by_name_and_scope_and_instance_id(role.to_s,self.class.name,self.id)
+        if options[:from].instance_of?(Group)
+          if(role.groups.index(options[:from]))
+             role.groups.delete options[:from]
+          else
+            return options[:from]
+          end
+        end
+        if options[:from].instance_of?(User)
+          if(role.users.index(options[:from]))
+            role.users.delete options[:from]
+          else
+            return options[:from]
+          end 
+        end
+      end
       def assign(role,options={})
         if not options.has_key?(:to)
           return
         end
-        role=Role.find_or_create_by_name_and_scope(role,self.class.name)
+        role=Role.find_or_create_by_name_and_scope_and_instance_id(role.to_s,self.class.name,self.id)
         if options[:to].instance_of?(Group)
-          if GroupRoleMembership.find(:first,
-                                      :conditions => ["role_id=? and group_id=? and instance_id=?", role.id, options[:to].id,self.id])
-            return
+          if(not role.groups.index(options[:to]))
+             role.groups << options[:to]
+          else
+            return options[:to]
           end
-          grm=role.group_role_memberships.build
-          grm.group = options[:to]
-          grm.instance_id = self.id
-          grm.save
         end
         if options[:to].instance_of?(User)
-          if UserRoleMembership.find(:first,
-                                      :conditions => ["role_id=? and user_id=? and instance_id=?", role.id, options[:to].id,self.id])
-            logger.info "Record found. Not creating an new one"
-            return
+          if(not role.users.index(options[:to]))
+            role.users << options[:to]
+          else
+            return options[:to]
           end 
-          urm=role.user_role_memberships.build
-          urm.user_id = options[:to].id
-          urm.instance_id=self.id
-          urm.save
-          logger.info "done saving a role"
         end
       end
     end

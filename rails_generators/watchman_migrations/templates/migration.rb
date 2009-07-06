@@ -36,26 +36,25 @@ class CreateWatchmanTables < ActiveRecord::Migration
     create_table :roles do |t|
       t.string :name
       t.string :scope #this is the name of the class
+      t.integer :instance_id
       t.timestamps
     end
 
-    add_index :roles, [:name,:scope], :unique=>true
+    add_index :roles, [:name,:scope,:instance_id], :unique=>true
 
     create_table :user_role_memberships do |t|
       t.integer :role_id
       t.integer :user_id
-      t.integer :instance_id
     end
 
-    add_index :user_role_memberships, [:role_id, :user_id, :instance_id], :unique=>true
+    add_index :user_role_memberships, [:role_id, :user_id], :unique=>true
 
     create_table :group_role_memberships do |t|
       t.integer :role_id
       t.integer :group_id
-      t.integer :instance_id
     end
 
-    add_index :group_role_memberships, [:role_id, :group_id, :instance_id], :unique=>true
+    add_index :group_role_memberships, [:role_id, :group_id], :unique=>true
   end
 
   def self.down

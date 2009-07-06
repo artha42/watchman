@@ -5,13 +5,20 @@ class UserSessionsController < ApplicationController
 
   def new
     @user_session = UserSession.new
+    @user_session.redirect_path=request.GET[:redirect_path]
   end
   
   def create 
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "User logged in successfully"
-      redirect_to root_path
+      if(params[:user_session][:redirect_path])
+        redirect_to CGI::unescape(params[:user_session][:redirect_path])
+        return
+      else
+        redirect_to root_path
+        return
+      end
     else
       flash[:error] = "Something went wrong"
       render :action => 'new'
