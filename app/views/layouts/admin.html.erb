@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Intranet - Administrative Modules</title>
+    <%= stylesheet_link_tag 'watchman/screen.css', :media=> 'screen, projection' %>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        <h1>Intranet - Administration</h1>
+      </div>
+      <div id="nav">
+        <ul>
+          <li><%= link_to 'Users', users_path %></li>
+          <li><%= link_to 'Groups', groups_path %></li>
+        </ul>
+      </div>
+      <div id="content">
+        <%= @content_for_layout %>
+      </div>
+
+    </div>
+  </body>
+</html>

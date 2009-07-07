@@ -1,0 +1,24 @@
+<div class="group">
+  <h3><%= @group.name %></h3>
+  <p><%= @group.description %></p>
+</div>
+<div id="group_members">
+<h4>Members - <%= @group.users.count %></h4>
+<ul class="users">
+  <% @group.users.each do |user| %>
+    <li class="user"><%= link_to user.login, user_path(user.id) %>
+    <%= link_to "Remove Membership", destroy_membership_path(@group.id,user.id) %>
+    </li>
+  <% end %>
+</ul>
+</div>
+<div id="group_non_members">
+<h4>Non Members - <%= @non_members.count %></h4>
+<ul class="users">
+  <% @non_members.each do |user| %>
+    <li class="user"><%= link_to user.login, user_path(user.id) %>
+    <%= link_to "Make member", create_membership_path(@group.id,user.id) %>
+    </li>
+  <% end %>
+</ul>
+</div>

@@ -1,0 +1,8 @@
+<ul class="users">
+<% @users.each do |user| %>
+  <li class="user" id="user-<%=user.id%>">
+  <%=link_to user.login, user_path(user.id) %>
+  </li>
+<% end %>
+</ul>
+<%=link_to 'New User', new_user_path, :class=>"new_user"%>

@@ -17,8 +17,30 @@
     li
       :display inline
       :color #ffffff
-      :background-color #ff0000
-    li.selected
-      :display inline
-      :color #ff0000
-      :background-color #ffffff
+      :padding 0 1em 0 1em
+      :font-size larger
+  #content
+    #group_members
+      +column(12)
+    #group_non_members
+      +column(12,true)
+    a.new_user
+      :background-image url(/images/user_add.png)
+      :background-repeat no-repeat
+      :padding-left 20px
+    a.new_group
+      :background-image url(/images/group_add.png)
+      :background-repeat no-repeat
+      :padding-left 21px
+    .users
+      :list-style-image url(/images/user.png)
+      :padding-left 1em
+    .groups
+      :list-style-image url(/images/group.png)
+      :padding-left 1em
+    #groups
+      div.group
+        a
+          :background-image url(/images/group.png)
+          :background-repeat no-repeat
+          :padding-left 20px

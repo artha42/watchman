@@ -1,0 +1,14 @@
+<%= error_messages_for :groups %>
+<% form_for @group do |f| %>
+  <p>
+  <%= f.label :name %><br/>
+  <%= f.text_field :name %>
+  </p>
+  <p>
+  <%= f.label :description %><br/>
+  <%= text_area :group, :description %>
+  </p>
+  <p>
+  <%= f.submit "Create" %>
+  </p>
+<% end %>

@@ -1,0 +1,9 @@
+<div id="groups">
+  <% @groups.each do |group|  %>
+    <div class="group" id="group-<%=group.id%>">
+      <h3><%= link_to group.name, group_path(group.id) %></h3>
+      <p><%= group.description %></p>
+    </div>
+  <% end %>
+</div>
+<%= link_to 'New Group', new_group_path, :class=>'new_group' %>
