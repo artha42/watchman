@@ -7,7 +7,7 @@
 <ul class="users">
   <% @group.users.each do |user| %>
     <li class="user"><%= link_to user.login, user_path(user.id) %>
-    <%= link_to "Remove Membership", destroy_membership_path(@group.id,user.id) %>
+    <%= link_to "Remove Membership", destroy_membership_path(@group.id,user.id), :confirm => 'Are you sure?', :method => :post %>
     </li>
   <% end %>
 </ul>
@@ -17,7 +17,7 @@
 <ul class="users">
   <% @non_members.each do |user| %>
     <li class="user"><%= link_to user.login, user_path(user.id) %>
-    <%= link_to "Make member", create_membership_path(@group.id,user.id) %>
+    <%= link_to "Make member", create_membership_path(@group.id,user.id), :confirm => 'Are you sure?', :method => :post %>
     </li>
   <% end %>
 </ul>
