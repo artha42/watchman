@@ -22,11 +22,28 @@ class User < ActiveRecord::Base
     if roleobj.users.index(self)
       return true
     end
-    
+
     roleobj.groups.each do |group|
       if(group.users.index(self))
         return true
       end
+    end
+    false
+  end
+
+  def self.in_group?(obj,userobj=nil)
+    session = UserSession.find
+    userobj ||= session.user
+    if userobj.nil?
+      raise Watchman::NoUserError, "No valid user"
+    end
+    userobj.in_group? obj
+  end
+
+  def in_group?(obj)
+    groupobj = Group.find_by_name(obj.to_s)
+    if groupobj.users.index(self)
+      return true
     end
     false
   end
@@ -57,5 +74,4 @@ class User < ActiveRecord::Base
     end
     return false
   end
-
 end
