@@ -1,0 +1,22 @@
+@import blueprint.sass
+@import blueprint/modules/typography.sass
+@import blueprint/modules/grid.sass
+@import blueprint/modules/colors.sass
+@import blueprint/modules/debug.sass
+@import compass/reset.sass
+
++blueprint-grid
++blueprint-typography
+
+#container
+  +container
+  #story
+    +column(10)
+    :font-size larger
+    :padding 1em
+  #login_form
+    :background-color #eeeeee
+    +column(10, true)
+    :margin-top 1em  
+    :padding 1em
+

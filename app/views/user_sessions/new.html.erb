@@ -1,3 +1,4 @@
+<div id="login_form">
 <%= error_messages_for :user_session %>
 <% form_for @user_session do |f| %>
   <p>
@@ -11,5 +12,4 @@
   <%= f.hidden_field :redirect_path %>
   <p><%= f.submit "Submit" %></p>
 <% end %>
-
- 
+</div>
