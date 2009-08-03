@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Star Intranet</title>
+    <%= stylesheet_link_tag 'watchman/user_sessions' %>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Welcome to Star Intranet</h1>
+      <div id="story">
+        <p>
+        Please login with your email address and password to access the intranet.
+        The intranet provides you the following.
+        </p>
+        <ul>
+          <li>Document Share</li>
+          <li>Forums</li>
+          <li>Blogs</li>
+          <li>Event Calendars</li>
+          <li>Gallery</li>
+        </ul>
+      </div>
+      <%=@content_for_layout%>
+    </div>
+  </body>
+</html>
