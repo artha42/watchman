@@ -2,19 +2,21 @@
 <% form_for @user do |f| %>
   <p>
     <%= f.label :login %><br />
-    <%= f.text_field :login %>
+    <%= f.text_field :login, :id =>"login" %>
   </p>
   <p>
       <%= f.label :password %><br />
-      <%= f.password_field :password %>
+      <%= f.password_field :password, :id => "password" %>
       </p>
     <p>
    <%= f.label :password_confirmation %><br />
-   <%= f.password_field :password_confirmation %>
+   <%= f.password_field :password_confirmation, :id => "confirm-password" %>
    </p>
    <p>
    <%= f.label :email %><br/>
    <%= f.text_field :email %>
    </p>
-  <p><%= f.submit "Submit" %></p>
+  <div id ="submit_button">
+      <p><%= f.submit "Submit", :id => "submit" %></p>
+  </div>
 <% end %>

@@ -8,12 +8,15 @@
     <%= javascript_include_tag "chroma-hash.js" %>
     <script src="" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
+      //<![CDATA[
       $(document).ready(function() {
       $("input:password").chromaHash({number: 3});
       $("#login").focus();
     });
+     //]]>
     </script>
     <style type="text/css" media="screen">
+      /*<![CDATA[ */
     body{background:#ddd;font-size:1.3em;font-family:"Helvetica",Helvetica,sans-serif;}
     h1,h2{text-align:center;}
     h1{color:#222;text-shadow:1px 1px 1px #ddd;margin-bottom:0.5em;}
@@ -33,12 +36,13 @@
     hr{border:0px transparent solid;border-top:1px #fdfdfd solid;border-bottom:1px #ddd solid;margin:20px 0 30px 0;}
     .container{padding:30px;width:480px;margin:100px auto;background:#fff;-moz-border-radius:11px;-khtml-border-radius:11px;-webkit-border-radius:11px;border-radius:11px;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-webkit-box-shadow:1px 0px 5px #666;-khtml-box-sizing:content-box;box-sizing:content-box;
     }
+    /*]]>*/
     </style>
 </head>
 
 <body>
   <div class="container">
-    <h1>Artha Intranet</h1>
+    <h1>Star Intranet</h1>
     <h2>An easy way intranet solution</h2>
     <fieldset>
     <%= error_messages_for :user_session %>
