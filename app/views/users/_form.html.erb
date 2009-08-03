@@ -1,19 +1,19 @@
 <%= error_messages_for :users %>
 <% form_for @user do |f| %>
   <p>
-    <%= f.label :login %><br />
+    <%= f.label :login %>
     <%= f.text_field :login, :id =>"login" %>
   </p>
   <p>
-      <%= f.label :password %><br />
+      <%= f.label :password %>
       <%= f.password_field :password, :id => "password" %>
       </p>
     <p>
-   <%= f.label :password_confirmation %><br />
+   <%= f.label :password_confirmation %>
    <%= f.password_field :password_confirmation, :id => "confirm-password" %>
    </p>
    <p>
-   <%= f.label :email %><br/>
+   <%= f.label :email %>
    <%= f.text_field :email %>
    </p>
   <div id ="submit_button">
