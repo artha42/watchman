@@ -1,8 +1,12 @@
 <%= error_messages_for :users %>
 <% form_for @user do |f| %>
   <p>
-    <%= f.label :login %>
-    <%= f.text_field :login, :id =>"login" %>
+   <%= f.label :username %>
+   <%= f.text_field :username %>
+  </p>
+  <p>
+   <%= f.label :email %>
+   <%= f.text_field :email %>
   </p>
   <p>
       <%= f.label :password %>
@@ -11,10 +15,6 @@
     <p>
    <%= f.label :password_confirmation %>
    <%= f.password_field :password_confirmation, :id => "confirm-password" %>
-   </p>
-   <p>
-   <%= f.label :email %>
-   <%= f.text_field :email %>
    </p>
   <div id ="submit_button">
       <p><%= f.submit "Submit", :id => "submit" %></p>

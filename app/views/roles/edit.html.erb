@@ -3,13 +3,13 @@
 <h4>Assigned Users - <%= @role.users.count %></h4>
 <ul>
   <% @role.users.each do |user| %>
-    <li><%= user.login %> - <%= link_to "remove", user_revoke_path(@scope,@instance_id,@role_sym,user.id), :confirm => 'Are you sure?', :method => :post %>
+    <li><%= user.username %> - <%= link_to "remove", user_revoke_path(@scope,@instance_id,@role_sym,user.id), :confirm => 'Are you sure?', :method => :post %>
   <% end %>
 </ul>
 <h4>Unassigned Users - <%= @rest_users.count %></h4>
 <ul>
   <% @rest_users.each do |user| %>
-    <li><%= user.login %> - <%= link_to "add", user_assign_path(@scope,@instance_id,@role_sym,user.id), :confirm => 'Are you sure?', :method => :post %>
+    <li><%= user.username %> - <%= link_to "add", user_assign_path(@scope,@instance_id,@role_sym,user.id), :confirm => 'Are you sure?', :method => :post %>
   <% end %>
 </ul>
 <h3>Groups:</h3>
