@@ -29,6 +29,7 @@ module Watchman
         if options[:from].instance_of?(Group)
           if(role.groups.index(options[:from]))
              role.groups.delete options[:from]
+             return options[:from]
           else
             return options[:from]
           end
@@ -36,6 +37,7 @@ module Watchman
         if options[:from].instance_of?(User)
           if(role.users.index(options[:from]))
             role.users.delete options[:from]
+            return options[:from]
           else
             return options[:from]
           end 
@@ -49,6 +51,7 @@ module Watchman
         if options[:to].instance_of?(Group)
           if(not role.groups.index(options[:to]))
              role.groups << options[:to]
+             return options[:to]
           else
             return options[:to]
           end
@@ -56,6 +59,7 @@ module Watchman
         if options[:to].instance_of?(User)
           if(not role.users.index(options[:to]))
             role.users << options[:to]
+            return options[:to]
           else
             return options[:to]
           end 
