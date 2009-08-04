@@ -3,7 +3,7 @@ load_schema
 class WatchmanExtensionsTest < ActiveSupport::TestCase
   context "given a bunch of users" do
     setup do
-      @admin_user=User.new(:login => "admin",
+      @admin_user=User.new(:username => "admin",
                           :password => "test",
                           :password_confirmation => "test",
                           :email => "admin@domain.com")
@@ -11,14 +11,14 @@ class WatchmanExtensionsTest < ActiveSupport::TestCase
       
       @admin_group = Group.new(:name => "admin")
       @admin_group.save!
-      @user1 = User.new(:login => "test",
+      @user1 = User.new(:username => "test",
                        :password => "password",
                        :password_confirmation => "password",
                        :email => "normal@domain.com")
       @user1.save!
       @admin_group.users << @user1
 
-      @user2 = User.new(:login => "test2",
+      @user2 = User.new(:username => "test2",
                        :password => "password",
                        :password_confirmation => "password",
                        :email => "user2@domain.com")

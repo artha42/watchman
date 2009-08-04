@@ -30,7 +30,7 @@ require File.dirname(__FILE__)+'/models'
 module AuthHelper
   def valid_user
     {
-      :login=>"vagmi",
+      :username=>"vagmi",
       :email=>"test@test.com",
       :password=>"password",
       :password_confirmation=>"password"

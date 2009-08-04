@@ -11,7 +11,7 @@
       //<![CDATA[
       $(document).ready(function() {
       $("input:password").chromaHash({number: 3});
-      $("#login").focus();
+      $("#email").focus();
     });
      //]]>
     </script>
@@ -49,7 +49,7 @@
     <% form_for @user_session do |f| %>
       <p>
         <%= f.label :email %>
-        <%= f.text_field :email %>
+        <%= f.text_field :email, :id => 'email' %>
       </p>
       <p>
         <%= f.label :password %>
