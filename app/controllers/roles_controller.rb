@@ -1,5 +1,6 @@
 class RolesController < ApplicationController
   before_filter :ensure_instance
+  layout nil
   def index
     @roles=Kernel::const_get(@scope).roles
   end
@@ -27,9 +28,7 @@ class RolesController < ApplicationController
   end
   def group_assign
     @role_sym=params[:role]
-    puts @role_sym
     @role=Role.find_or_create_by_name_and_scope_and_instance_id(@role_sym,@scope,@instance_id)
-    puts @role
     g=Group.find(params[:group_id])
     if(@instance.assign(@role_sym.to_sym,:to=>g))
       redirect_to edit_role_path(@scope,@instance_id,@role_sym)
