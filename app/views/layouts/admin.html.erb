@@ -1,23 +1,34 @@
 <html>
   <head>
     <title>Intranet - Administrative Modules</title>
-    <%= stylesheet_link_tag 'watchman/screen.css', :media=> 'screen, projection' %>
+    <%= stylesheet_link_tag 'screen', :media=> 'screen, projection' %>
   </head>
   <body>
-    <div id="container">
-      <div id="header">
-        <h1>Intranet - Administration</h1>
+    <div id="header">
+      <div class="left">
+        <a href="/document_share"><img src="/images/starhealth.gif" alt="Star Health"/></a>
       </div>
-      <div id="nav">
-        <ul>
-          <li><%= link_to 'Users', users_path %></li>
-          <li><%= link_to 'Groups', groups_path %></li>
-        </ul>
+      <div class="middle">
+        <h2>Star Health - Employee Intranet</h2>
       </div>
-      <div id="content">
-        <%= @content_for_layout %>
+      <span class="user_info">
+        <%= current_user.username %> |
+        <%= link_to "logout", logout_path %>
+      </span>
+      <div id="main" class="ui-layout-center">
+        <div id="nav">
+          <h2 id="admin-heading">Intranet - Administration</h2>
+        </div>
+        <div id="content">
+          <%= @content_for_layout %>
+        </div>
       </div>
-
+      <div class="ui-layout-south" id="footer">
+        <p align="center">
+        Content &copy; Star Health &amp; Allied Insurance Co. Ltd.<br/>
+          Powered by <%= link_to "Artha42 Technology Solutions Pvt. Ltd.", "http://www.artha42.com" %>
+        </p>
+      </div>
     </div>
   </body>
 </html>

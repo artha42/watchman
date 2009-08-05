@@ -1,4 +1,5 @@
 <%= error_messages_for :groups %>
+
 <% form_for @group do |f| %>
   <p>
   <%= f.label :name %><br/>
@@ -6,7 +7,7 @@
   </p>
   <p>
   <%= f.label :description %><br/>
-  <%= text_area :group, :description %>
+  <%= f.text_area :description %>
   </p>
   <p>
   <%= f.submit "Create" %>

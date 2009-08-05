@@ -1,22 +1,24 @@
-<%= error_messages_for :users %>
-<% form_for @user do |f| %>
-  <p>
-    <%= f.label :email %>
-    <%= f.text_field :email, :id => 'email' %>
-  </p>
-  <p>
-    <%= f.label :password %>
-    <%= f.password_field :password, :id => "password" %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, :id => "confirm-password" %>
-  </p>
-  <p>
-    <%= f.label :displayname %>
-    <%= f.text_field :username %>
-  </p>
-  <div id ="submit_button">
-      <p><%= f.submit "Submit", :id => "submit" %></p>
-  </div>
-<% end %>
+<div class="user_form">
+  <%= error_messages_for :users %>
+  <% form_for @user do |f| %>
+    <p>
+      <%= f.label :email %><br />
+      <%= f.text_field :email, :id => 'email' %>
+    </p>
+    <p>
+      <%= f.label :password %><br />
+      <%= f.password_field :password, :id => "password" %>
+    </p>
+    <p>
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, :id => "confirm-password" %>
+    </p>
+    <p>
+      <%= f.label :displayname %><br />
+      <%= f.text_field :username %>
+    </p>
+    <div id ="submit_button">
+        <p><%= f.submit "Submit", :id => "submit" %></p>
+    </div>
+  <% end %>
+</div>

@@ -1,9 +1,15 @@
-<h3><%=@user.username%></h3>
-<div id="member_groups">
-  <h4>List of groups with membership</h4>
-  <ul class="groups">
-  <% @user.groups.each do |group| %>
-    <li class="group"><%=link_to group.name, group_path(group.id)%></li>
-  <% end %>
-  </ul>
+<div class="main_section">
+  <h3><%=@user.username%></h3>
+  <div id="member_groups">
+    <h4>List of groups with membership</h4>
+    <ul class="groups">
+    <% @user.groups.each do |group| %>
+      <li class="group"><%=link_to group.name, group_path(group.id)%></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+<div class="actions">
+  <%=link_to 'Users', users_path %>    <br />
+  <%=link_to 'Groups', groups_path %>    <br />
 </div>
