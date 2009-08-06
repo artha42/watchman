@@ -1,15 +1,19 @@
-<%= error_messages_for :groups %>
-
-<% form_for @group do |f| %>
-  <p>
-  <%= f.label :name %><br/>
-  <%= f.text_field :name %>
-  </p>
-  <p>
-  <%= f.label :description %><br/>
-  <%= f.text_area :description %>
-  </p>
-  <p>
-  <%= f.submit "Create" %>
-  </p>
-<% end %>
+<h3 align="center">New Group</h3>
+<div class="user_form">
+  <% form_for @group do |f| %>
+    <%= f.error_messages %>
+    <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+    </p>
+    <p>
+    <%= f.label :description %><br/>
+    <%= f.text_area :description, :id => 'description' %>
+    </p>
+    <div id ="submit_button">
+      <p>
+      <%= f.submit "Create" %>
+      </p>
+    </div>
+  <% end %>
+</div>

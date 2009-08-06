@@ -6,4 +6,5 @@ class Group < ActiveRecord::Base
   has_many :roles, :through=>:group_role_memberships
 
   validates_uniqueness_of :name
+  validates_presence_of :name
 end

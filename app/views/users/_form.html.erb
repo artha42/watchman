@@ -1,6 +1,6 @@
 <div class="user_form">
-  <%= error_messages_for :users %>
   <% form_for @user do |f| %>
+    <p><%=f.error_messages %> </p>
     <p>
       <%= f.label :email %><br />
       <%= f.text_field :email, :id => 'email' %>
