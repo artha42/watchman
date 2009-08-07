@@ -42,6 +42,37 @@ class RolesController < ApplicationController
       redirect_to edit_role_path(@scope,@instance_id,@role_sym)
     end
   end
+  def users
+    @users=User.find(:all)
+    @role=params[:role]
+    respond_to do |format|
+      format.json {
+        ret_arr = []
+        @users.each do |user|
+          text="#{user.username} - #{user.email}"
+          url=user_assign_path(@scope,@instance_id,@role,user.id)
+          ret_arr << {:text=>text,:url=>url}
+        end
+        render :json=>ret_arr.to_json
+      }
+    end
+  end
+  def groups
+    @groups=Group.find(:all)
+    @role=params[:role]
+    respond_to do |format|
+      format.json {
+        ret_arr = []
+        @groups.each do |group|
+          text=group.name
+          url=group_assign_path(@scope,@instance_id,@role,group.id)
+          ret_arr << {:text=>text,:url=>url}
+        end
+        render :json=>ret_arr.to_json
+      }
+    end
+
+  end
   protected
   def ensure_instance
     @scope=params[:scope]

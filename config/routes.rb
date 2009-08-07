@@ -11,4 +11,6 @@ ActionController::Routing::Routes.draw do |map|
   map.group_revoke '/roles/revoke/:scope/:instance_id/:role/from_group/:group_id', :controller=>'roles',:action=>'group_revoke'
   map.create_membership '/memberships/create/:group_id/:user_id', :controller=>'memberships', :action=>'create'
   map.destroy_membership 'memberships/destroy/:group_id/:user_id', :controller=>'memberships', :action=>'destroy'
+  map.users_for_role 'roles/users/:scope/:instance_id/:role.:format',:controller=>'roles',:action=>'users'
+  map.groups_for_role 'roles/groups/:scope/:instance_id/:role.:format', :controller=>'roles', :action=>'groups'
 end
