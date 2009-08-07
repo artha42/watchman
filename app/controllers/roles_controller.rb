@@ -6,7 +6,7 @@ class RolesController < ApplicationController
   end
   def edit
     @role_sym=params[:role]
-    @role=Role.find_by_name_and_scope_and_instance_id(@role_sym,@scope,@instance_id)
+    @role=Role.find_or_create_by_name_and_scope_and_instance_id(@role_sym,@scope,@instance_id)
     @rest_users = User.find(:all) - @role.users
     @rest_groups = Group.find(:all) - @role.groups
   end
