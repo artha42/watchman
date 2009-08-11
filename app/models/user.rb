@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :user_role_memberships
   has_many :roles, :through=>:user_role_memberships
-
+  attr_accessor :old_password
+  
   def self.in_role?(role,obj,userobj=nil)
     session = UserSession.find
     userobj ||= session.user
