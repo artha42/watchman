@@ -33,25 +33,4 @@ class UsersController < AdminController
       render :action => 'edit'
     end
   end
-  
-  def change_password
-    @user = current_user
-  end
-
-  def update_password    
-    @user_before_check = params[:user][:old_password]
-    @user = User.find(params[:id])
-    
-      if @user.valid_password?(@user_before_check)
-        if @user.update_attributes(params[:user])
-          flash[:notice] = "Successfully updated user."
-          redirect_to root_path
-        else
-          render :action => 'change_password'
-        end
-      else
-        redirect_to :action =>'change_password'
-        flash[:notice] = "Old Password is wrong or blank"
-      end    
-  end
 end
