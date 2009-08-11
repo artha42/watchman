@@ -33,4 +33,8 @@ class UsersController < AdminController
       render :action => 'edit'
     end
   end
+  
+  def change_password
+    @user = User.find(params[:id])
+  end
 end
