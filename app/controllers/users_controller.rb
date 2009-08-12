@@ -12,13 +12,15 @@ class UsersController < AdminController
       format.html
       format.json {
         return_array = []
+        p = {}
         @users.each do |user|
-          o={}
-          o[:id]=user.id
-          o[:cell]=[user.id,user.username,user.email]
+          o = {}
+          o[:id] = user.id
+          o[:cell] = [user.id,user.username,user.email]
           return_array << o
-        end
-        render :json=>return_array.to_json
+        end         
+        p[:rows] = return_array
+        render :json=>p.to_json
       }
     end
   end
