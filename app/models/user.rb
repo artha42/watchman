@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_authentic do |c|
-    login_field :email
+    login_field :username
   end
   has_one :profile
   has_many :memberships
@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   end
 
   def is_admin?
-    if(self.email == "admin@artha42.com")
+    if(self.email == "admin@artha42.com" || self.username == "admin")
       return true
     end
 
@@ -75,5 +75,8 @@ class User < ActiveRecord::Base
       end
     end
     return false
+  end
+  def display_name
+    "#{self.first_name} #{self.last_name}"
   end
 end
