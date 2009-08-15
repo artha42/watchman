@@ -10,7 +10,7 @@ module AuthHelper
   end 
 
   def is_admin?
-    if(current_user.email == "admin@artha42.com")
+    if(current_user.email == "admin@starhealth.in")
       return true
     end
     admin_group=Group.find_by_name("admin")
