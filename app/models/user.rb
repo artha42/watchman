@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   acts_as_authentic do |c|
     login_field :username
+    validates_length_of_login_field_options :in=>1..100
   end
   has_one :profile
   has_many :memberships
