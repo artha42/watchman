@@ -1,4 +1,6 @@
 class UsersController < AdminController
+  #we really should not be doing this but we need it for time_ago_in_words
+  include ActionView::Helpers::DateHelper 
   layout "admin"
   def new
     @user = User.new
@@ -14,12 +16,13 @@ class UsersController < AdminController
         return_array =[]
         p = {}
         @users.each do |user|
+          last_login = user.last_login_at && "#{time_ago_in_words(user.last_login_at)} ago"
           return_array << [ user.id,
                             user.username,
                             user.email,
                             user.login_count,
-                            user.last_login_at,
-                            user.last_login_ip
+                            last_login ||="never",
+                            user.last_login_ip||="never"
                             ]
         end
         p[:aaData] = return_array
