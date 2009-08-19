@@ -8,18 +8,21 @@ class UsersController < AdminController
   end
   def index
     @users = User.find(:all)
-    respond_to  do |format|
+    respond_to do |format|
       format.html
-      format.json {
-        return_array = []
+      format.json {        
+        return_array =[]
         p = {}
         @users.each do |user|
-          o = {}
-          o[:id] = user.id
-          o[:cell] = [user.id,user.username,user.email]
-          return_array << o
-        end         
-        p[:rows] = return_array
+          return_array << [ user.id,
+                            user.username,
+                            user.email,
+                            user.login_count,
+                            user.last_login_at,
+                            user.last_login_ip
+                            ]
+        end
+        p[:aaData] = return_array
         render :json=>p.to_json
       }
     end
