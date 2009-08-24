@@ -4,8 +4,6 @@ class GroupsController < AdminController
   end
   def show
     @group=Group.find(params[:id])
-    @users=User.find(:all)
-    @non_members=@users-@group.users
   end
   def new
     @group = Group.new

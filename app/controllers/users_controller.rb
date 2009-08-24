@@ -9,24 +9,16 @@ class UsersController < AdminController
     @user=User.find(params[:id])
   end
   def index
-    @users = User.find(:all)
+    if(params.has_key? :group_id)
+      @users=Group.find(params[:group_id]).users
+    else
+      @users = User.find(:all)
+    end
     respond_to do |format|
       format.html
       format.json {        
-        return_array =[]
-        p = {}
-        @users.each do |user|
-          last_login = user.last_login_at && "#{time_ago_in_words(user.last_login_at)} ago"
-          return_array << [ user.id,
-                            user.username,
-                            user.email,
-                            user.login_count,
-                            last_login ||="never",
-                            user.last_login_ip||="never"
-                            ]
-        end
-        p[:aaData] = return_array
-        render :json=>p.to_json
+        puts JSON.parser.to_s
+        render :json=>@users.to_json
       }
     end
   end
