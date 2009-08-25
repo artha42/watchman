@@ -71,6 +71,17 @@ end
 class ActiveRecord::Base
   class << self
     attr_accessor :roles, :permissions
+    
+    def find_all_by_role(role,options={})
+      if not options.has_key?(:for)
+        return
+      end
+      role_name=role.to_s
+      user_id=options[:for].id.to_s
+      kls=self
+      table_name=self.table_name
+      kls.find_by_sql("select #{table_name}.* from #{table_name} inner join roles on #{table_name}.id=roles.instance_id and roles.name='#{role_name}' and roles.scope='#{kls.name}' inner join user_role_memberships on roles.id=user_role_memberships.role_id and user_role_memberships.user_id=#{user_id} union select #{table_name}.* from #{table_name} inner join roles on #{table_name}.id=roles.instance_id and roles.name='#{role_name}' and roles.scope='#{kls.name}' inner join group_role_memberships on roles.id=group_role_memberships.role_id inner join memberships on memberships.group_id=group_role_memberships.group_id and memberships.user_id=#{user_id}") 
+    end
   end
 end
 ActiveRecord::Base.send :include, Watchman::ActiveRecord
