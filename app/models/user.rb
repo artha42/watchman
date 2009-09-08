@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
   end
 
   def is_admin?
-    if(self.email == "admin@artha42.com" || self.username == "admin")
+    if(self.email == "admin@starhealth.in" || self.username == "admin")
       return true
     end
 
