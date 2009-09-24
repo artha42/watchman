@@ -1,6 +1,8 @@
 class UsersController < AdminController
   #we really should not be doing this but we need it for time_ago_in_words
-  include ActionView::Helpers::DateHelper 
+  include ActionView::Helpers::DateHelper
+  #This is not to be done, but for the profile pic image turns to be show stopper
+  before_filter :user_profile
   layout "admin"
   def new
     @user = User.new
