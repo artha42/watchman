@@ -29,13 +29,21 @@
       </div>
         <div id="main" class="ui-layout-center">
           <div class="container">
-            <%if flash[:notice]%>
-              <font color ="blue">
-                <p>
-                  <b><%= flash[:notice] %></b>
-                </p>
-              </font>
-            <% end %>
+            <div class ="flash" style ="width:450px;margin-left:auto;margin-right:auto">
+              <%if flash[:notice]%>
+                <font color ="blue">
+                  <p>
+                    <b><%= flash[:notice] %></b>
+                  </p>
+                </font>
+              <% elsif flash[:error] %>
+              <font color ="red">
+                  <p>
+                    <b><%= flash[:error] %></b>
+                  </p>
+                </font>
+              <% end %>
+            </div>
             <div class="user_form">
               <%= error_messages_for :user_session %>
               <% form_for @user_session do |f| %>
