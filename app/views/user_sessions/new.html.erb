@@ -1,4 +1,3 @@
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -30,6 +29,13 @@
       </div>
         <div id="main" class="ui-layout-center">
           <div class="container">
+            <%if flash[:notice]%>
+              <font color ="blue">
+                <p>
+                  <b><%= flash[:notice] %></b>
+                </p>
+              </font>
+            <% end %>
             <div class="user_form">
               <%= error_messages_for :user_session %>
               <% form_for @user_session do |f| %>
@@ -45,6 +51,9 @@
                 <div id ="submit_button">
                 <p><%= f.submit "Submit", :id => "submit" %></p>
                 </div>
+                <p style="padding-left:85px">
+                  <%= link_to "Forgot Password", forgot_password_path %>
+                </p>
               <% end %>
             </div>
           </div>
