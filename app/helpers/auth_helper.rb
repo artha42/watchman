@@ -15,7 +15,7 @@ module AuthHelper
     end
     admin_group=Group.find_by_name("admin")
     if(admin_group)
-      if(admin_group.index(current_user))
+      if(admin_group.users.index(current_user))
         return true
       end
     end
