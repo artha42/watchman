@@ -20,7 +20,6 @@ class UserSessionsController < ApplicationController
         return
       end
     else
-      flash[:error] = "Something went wrong"
       render :action => 'new'
     end
   end
